@@ -1,0 +1,508 @@
+/*
+ * General Styles and Typography
+*/
+:root {
+    /* Bold, modern colors with a deep purple/blue base */
+    --primary-color: #7B68EE; /* Medium Slate Blue - Primary Brand */
+    --primary-dark: #6A5ACD; /* Slate Blue - Hover State */
+    --secondary-color: #38A169; /* Emerald Green - Success/Accent */
+    --background-color: #f0f4f8; /* Very light slate/blue-gray background */
+    --card-background: #ffffff;
+    --text-color: #2c3e50; /* Darker text for contrast */
+    --border-color: #e6e6fa; /* Light Lavender */
+
+    /* Gradients */
+    --button-gradient: linear-gradient(45deg, #7B68EE, #9370DB); /* Primary button gradient */
+    --ai-chat-gradient: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Light cyan gradient for AI */
+
+    --font-family: 'Poppins', sans-serif; /* A more modern font choice */
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h2, h3 {
+    color: var(--primary-dark);
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.8rem; /* Increased size */
+}
+
+/*
+ * Navbar Styles
+*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px; /* Increased padding */
+    background-color: var(--card-background);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem; /* Increased size */
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+}
+
+.nav-buttons a {
+    text-decoration: none;
+    color: var(--text-color);
+    margin-left: 30px; /* Increased spacing */
+    padding: 10px 20px; /* Increased padding */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.nav-buttons a:hover {
+    color: var(--primary-color);
+}
+
+.signup-btn {
+    background: var(--button-gradient);
+    color: var(--card-background) !important;
+    box-shadow: 0 4px 10px rgba(123, 104, 238, 0.4);
+}
+
+.signup-btn:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 6px 15px rgba(123, 104, 238, 0.6);
+}
+
+/* Navbar logout button (Refined Design) */
+.logout-btn {
+    background-color: #ff4d4f; /* Red color */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Slightly larger for better click target */
+    border-radius: 8px; /* Slightly more rounded */
+    cursor: pointer;
+    font-weight: 600; /* Slightly less bold */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
+    text-transform: uppercase; /* Modern look */
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(255, 77, 79, 0.3);
+}
+
+.logout-btn:hover {
+    background-color: #e63946; /* Deeper red on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 6px 12px rgba(255, 77, 79, 0.5);
+}
+
+.logout-btn:active {
+    transform: translateY(0); /* Press down effect */
+    box-shadow: 0 2px 4px rgba(255, 77, 79, 0.3);
+}
+
+/*
+ * Authentication Pages (Login/Signup)
+*/
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+}
+
+.auth-form {
+    background-color: var(--card-background);
+    padding: 50px; /* Increased padding */
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 450px; /* Increased width */
+    text-align: center;
+}
+
+.auth-form h2 {
+    font-size: 2.5rem; /* Increased size */
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 15px; /* Increased padding */
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-form input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.2);
+    outline: none;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 15px; /* Increased padding */
+    background: var(--button-gradient);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 15px;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.auth-form button:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 4px 15px rgba(123, 104, 238, 0.6);
+}
+
+.auth-form p {
+    margin-top: 25px;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.auth-form p a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/*
+ * Dashboard Layout
+*/
+.dashboard-container {
+    display: flex;
+    max-width: 1500px; /* Increased overall width */
+    margin: 40px auto; /* Increased margin */
+    padding: 0 30px;
+    gap: 40px; /* Increased gap */
+}
+
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.right-panel {
+    flex: 2.5; /* Slightly increased chat panel size */
+    background-color: var(--card-background);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 35px; /* Increased padding */
+}
+
+/*
+ * CalendarUpload and ChildProfile styles (Shared form container)
+*/
+.calendar-upload, .child-profile {
+    background-color: var(--card-background);
+    padding: 30px; /* Increased padding */
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.calendar-upload form, .child-profile form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap */
+}
+
+.calendar-upload input,
+.calendar-upload select,
+.child-profile input {
+    padding: 12px 18px; /* Increased padding */
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    width: 100%;
+}
+
+.calendar-upload button,
+.child-profile button {
+    padding: 14px; /* Increased padding */
+    background: var(--button-gradient);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.calendar-upload button:hover,
+.child-profile button:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 4px 10px rgba(123, 104, 238, 0.4);
+}
+
+/*
+ * Dashboard Navigation Buttons (Reduced Size)
+*/
+.dashboard-btn,
+.eventlist-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px; /* Reduced padding */
+    margin-bottom: 15px; /* Reduced margin */
+    border: none;
+    border-radius: 10px; /* Slightly reduced border radius */
+    cursor: pointer;
+    font-size: 1.1rem; /* Reduced font size */
+    font-weight: 600; /* Slightly reduced font weight */
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08); /* Adjusted shadow */
+}
+
+.dashboard-btn {
+    /* Primary focus button style */
+    background: var(--button-gradient);
+    color: white;
+    box-shadow: 0 4px 10px rgba(123, 104, 238, 0.4);
+}
+
+.dashboard-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(123, 104, 238, 0.6);
+}
+
+.eventlist-btn {
+    /* Secondary/Accent button style */
+    background-color: var(--card-background);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color); /* Thinner border */
+}
+
+.eventlist-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    border-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.events-container {
+    padding: 30px;
+    text-align: center;
+}
+
+.event-cards {
+    display: grid;
+    /* This ensures a maximum of 4 cards per row, adjusting card size accordingly */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.2s;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+
+/*
+ * ChatBot Styles
+*/
+.chatbot-container {
+    display: flex;
+    flex-direction: column;
+    height: 700px; /* Increased fixed height for chat */
+}
+
+.chat-window {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px; /* Increased padding */
+    margin-bottom: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    max-width: 70%;
+    padding: 12px 18px; /* Increased padding */
+    border-radius: 25px;
+    margin-bottom: 15px; /* Increased spacing */
+    line-height: 1.5;
+    font-size: 1.05rem;
+    word-wrap: break-word;
+}
+
+.chat-message.parent {
+    align-self: flex-end;
+    background: var(--button-gradient);
+    color: white;
+    border-bottom-right-radius: 8px;
+}
+
+.chat-message.ai {
+    align-self: flex-start;
+    background: var(--ai-chat-gradient);
+    color: var(--text-color);
+    border-bottom-left-radius: 8px;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px 0;
+    gap: 15px;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 14px 25px; /* Increased padding */
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    font-size: 1.1rem;
+}
+
+.chat-input button {
+    padding: 12px 30px; /* Increased padding */
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.chat-input button:hover {
+    background-color: #318a56;
+}
+
+.right-panel > p {
+    text-align: center;
+    color: var(--primary-dark);
+    padding-top: 100px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+
+/*
+ * EventList Styles (Updated for 4-per-row grid)
+*/
+.event-list {
+    display: grid;
+    /* max-width is used to constrain the cards to 4 columns on large screens */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 25px; /* Increased gap */
+    margin-top: 25px;
+}
+
+/* New Media Query for the Event List to handle responsiveness */
+@media (max-width: 1400px) {
+    .event-list {
+        /* On slightly smaller screens, reduce to 3 columns */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+.event-card {
+    background-color: #fce4ec; /* Light Pink for a lively contrast */
+    border-left: 6px solid #e91e63; /* Deep Pink accent */
+    padding: 20px; /* Increased padding */
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.event-card.today {
+    border-left-color: var(--secondary-color); /* Highlight today's event with Green */
+    background-color: #e8f5e9; /* Very light green background for today */
+}
+
+.event-card p {
+    margin: 7px 0;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.event-card strong {
+    font-size: 1.25rem; /* Increased size */
+    font-weight: 700;
+    color: var(--primary-dark);
+    display: block; /* Make it take up its own line */
+    margin-bottom: 5px;
+}
+
+/*
+ * Responsive Design
+*/
+@media (max-width: 1024px) {
+    .dashboard-container {
+        flex-direction: column;
+        padding: 0 20px;
+        margin-top: 30px;
+    }
+
+    /* Event list on tablets/small laptops: reduce to 2 columns */
+    .event-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .nav-buttons {
+        display: none; /* Hide on very small screens for simplicity */
+    }
+    .auth-form {
+        max-width: 90%;
+        padding: 30px;
+    }
+    .chatbot-container {
+        height: 500px;
+    }
+    /* Event list on mobile: single column */
+    .event-list {
+        grid-template-columns: 1fr;
+    }
+}
