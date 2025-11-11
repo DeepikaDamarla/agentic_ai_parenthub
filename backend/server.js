@@ -12,8 +12,8 @@ import fetchEventsRoute from "./routes/fetchEventsRoute.js";
 import cron from "node-cron";
 import { notifyParents } from "./utils/notifyEvents.js";
 import notifyRoute from "./routes/notifyRoute.js";
-
-
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -30,19 +30,28 @@ app.use("/api/auth", authRoutes);
 app.use("/api/events/fetch", fetchEventsRoute); // GET: /api/events/fetch
 app.use("/api", notifyRoute); // GET /api/notify-test
 
-// Schedule to run every day at 9 AM
-// cron.schedule("0 9 * * *", () => {
-//   console.log("Checking for events to notify parents...");
-//   notifyParents();
-// });
-//notifyParents();
+// Cron job – runs every 5 seconds (you can adjust this later)
 cron.schedule("*/5 * * * * *", () => {
   notifyParents();
 });
 
-app.get("/", (req, res) => {
-  res.send("Agentic AI Parent Hub Backend Running 🚀");
-});
+// Serve frontend in production
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+if (process.env.NODE_ENV === "production") {
+  // Serve the static files from React app
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+  // Handle React routing, return all requests to React app
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Agentic AI Parent Hub Backend Running 🚀");
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
